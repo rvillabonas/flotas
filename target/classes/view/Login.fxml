@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,13 +19,16 @@
                <children>
                   <TextField fx:id="lblUser" layoutX="23.0" layoutY="119.0" prefHeight="31.0" prefWidth="269.0" promptText="usuario" />
                   <PasswordField fx:id="lblpassword" layoutX="23.0" layoutY="174.0" prefHeight="31.0" prefWidth="269.0" promptText="password" />
-                  <Button fx:id="btnLogin" layoutX="23.0" layoutY="264.0" mnemonicParsing="false" onAction="#login" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #e45652;" text="Aceptar" textFill="#eeebeb" />
+                  <Button fx:id="btnLogin" blendMode="COLOR_DODGE" layoutX="23.0" layoutY="264.0" mnemonicParsing="false" onAction="#login" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #e45652;" text="Aceptar" textFill="#eeebeb" />
                   <Label layoutX="130.0" layoutY="53.0" text="Sign in" textFill="#eeebeb">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children>
+               <effect>
+                  <Blend />
+               </effect>
             </AnchorPane>
             <Label layoutX="51.0" layoutY="164.0" text="Bienvenido a gestión de flotas" textFill="#eeebeb">
                <font>

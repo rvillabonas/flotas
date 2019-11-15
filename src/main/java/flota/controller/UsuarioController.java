@@ -22,8 +22,11 @@ public class UsuarioController  implements Initializable{
 @FXML 
 Button btnLogin = new Button (); 
 
+
 @FXML 
 public void login (ActionEvent event) {
+	
+	
 	
 	System.out.println("Hola" );
 	
