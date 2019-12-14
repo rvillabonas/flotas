@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name="TGF_USUARIO")
 @NamedQuery(name="Tgf_Usuario.findAll", query="SELECT t FROM Tgf_Usuario t")
-public class Tgf_Usuario implements Serializable {
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,7 +32,7 @@ public class Tgf_Usuario implements Serializable {
 	@OneToMany(mappedBy="tgfUsuario")
 	private List<Tgf_Persona> tgfPersonas;
 
-	public Tgf_Usuario() {
+	public Usuario() {
 	}
 
 	public String getUsuNickname() {

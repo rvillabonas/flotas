@@ -86,7 +86,7 @@ public class Tgf_Persona implements Serializable {
 	//bi-directional many-to-one association to Tgf_Usuario
 	@ManyToOne
 	@JoinColumn(name="USU_NICKNAME", nullable=false)
-	private Tgf_Usuario tgfUsuario;
+	private Usuario tgfUsuario;
 
 	public Tgf_Persona() {
 	}
@@ -257,11 +257,11 @@ public class Tgf_Persona implements Serializable {
 		this.tgfTelefono = tgfTelefono;
 	}
 
-	public Tgf_Usuario getTgfUsuario() {
+	public Usuario getTgfUsuario() {
 		return this.tgfUsuario;
 	}
 
-	public void setTgfUsuario(Tgf_Usuario tgfUsuario) {
+	public void setTgfUsuario(Usuario tgfUsuario) {
 		this.tgfUsuario = tgfUsuario;
 	}
 
