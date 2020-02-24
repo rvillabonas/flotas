@@ -12,69 +12,77 @@ import java.util.List;
  */
 @Entity
 @Table(name="TGF_USUARIO")
-@NamedQuery(name="Tgf_Usuario.findAll", query="SELECT t FROM Tgf_Usuario t")
+@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@NamedStoredProcedureQuery(
+		name = "login", 
+		procedureName = "kgf_usuario.pgf_validate_user", 
+		parameters = { 
+			@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "usuario"), 
+			@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "passwd"), 
+			@StoredProcedureParameter(mode = ParameterMode.OUT, type = String.class, name = "usuVal")
+		}
+	)
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="USU_NICKNAME", unique=true, nullable=false, length=30)
-	private String usuNickname;
+	@Column(name="USU_NICKNAME")
+	private String nickname;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="USU_FECHA_ULT_INGRESO")
-	private Date usuFechaUltIngreso;
+	private Date fechaUltIngreso;
 
-	@Column(name="USU_PASSWORD", nullable=false, length=200)
-	private String usuPassword;
+	@Column(name="USU_PASSWORD")
+	private String password;
 
-	//bi-directional many-to-one association to Tgf_Persona
+	//bi-directional many-to-one association to Persona
 	@OneToMany(mappedBy="tgfUsuario")
-	private List<Tgf_Persona> tgfPersonas;
+	private List<Persona> tgfPersonas;
 
 	public Usuario() {
 	}
 
-	public String getUsuNickname() {
-		return this.usuNickname;
+	public String getNickname() {
+		return this.nickname;
 	}
 
-	public void setUsuNickname(String usuNickname) {
-		this.usuNickname = usuNickname;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
-	public Date getUsuFechaUltIngreso() {
-		return this.usuFechaUltIngreso;
+	public Date getFechaUltIngreso() {
+		return this.fechaUltIngreso;
 	}
 
-	public void setUsuFechaUltIngreso(Date usuFechaUltIngreso) {
-		this.usuFechaUltIngreso = usuFechaUltIngreso;
+	public void setFechaUltIngreso(Date fechaUltIngreso) {
+		this.fechaUltIngreso = fechaUltIngreso;
 	}
 
-	public String getUsuPassword() {
-		return this.usuPassword;
+	public String getPassword() {
+		return this.password;
 	}
 
-	public void setUsuPassword(String usuPassword) {
-		this.usuPassword = usuPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public List<Tgf_Persona> getTgfPersonas() {
+	public List<Persona> getTgfPersonas() {
 		return this.tgfPersonas;
 	}
 
-	public void setTgfPersonas(List<Tgf_Persona> tgfPersonas) {
+	public void setTgfPersonas(List<Persona> tgfPersonas) {
 		this.tgfPersonas = tgfPersonas;
 	}
 
-	public Tgf_Persona addTgfPersona(Tgf_Persona tgfPersona) {
+	public Persona addTgfPersona(Persona tgfPersona) {
 		getTgfPersonas().add(tgfPersona);
 		tgfPersona.setTgfUsuario(this);
 
 		return tgfPersona;
 	}
 
-	public Tgf_Persona removeTgfPersona(Tgf_Persona tgfPersona) {
+	public Persona removeTgfPersona(Persona tgfPersona) {
 		getTgfPersonas().remove(tgfPersona);
 		tgfPersona.setTgfUsuario(null);
 
