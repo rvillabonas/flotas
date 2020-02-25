@@ -8,6 +8,7 @@ import java.util.List;
 
 
 /**
+ * @author rvns
  * The persistent class for the TGF_FRANJA_HORARIA database table.
  * 
  */

@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 
-/**
+/*
+ * @author rvns
  * The persistent class for the TGF_TARIFA database table.
  * 
  */

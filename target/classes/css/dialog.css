@@ -1,0 +1,28 @@
+.dialog-pane .button{
+   -fx-background-color:#2C2D2B;
+   -fx-text-fill:white;
+   -fx-wrap-text: true;
+   -fx-effect: dropshadow( three-pass-box, #9C2827, 10.0, 0.0, 0.0, 0.0);
+    -fx-cursor:hand;
+ }
+ 
+.dialog-pane:header .header-panel {
+  -fx-background-color: #FFFFFF;
+}
+ 
+ .dialog-pane:header .header-panel .label{
+  -fx-background-color: #FFFFFF;
+   -fx-font-size:18.0px;
+}
+
+
+.dialog-pane > .content.label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color:  #FFFFFF;
+   -fx-text-fill:black;
+   -fx-font-size:18.0px;
+}
+
+.dialog-pane > .button-bar > .container {
+  -fx-background-color:#FFFFFF;
+}

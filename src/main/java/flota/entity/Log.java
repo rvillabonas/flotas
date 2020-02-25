@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 
 
 /**
+ * @author rvns
  * The persistent class for the TGF_LOG database table.
  * 
  */

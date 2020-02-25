@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 
 /**
+ * @author
  * The persistent class for the TGF_PORCENTAJE_SOBRECUPO database table.
  * 
  */

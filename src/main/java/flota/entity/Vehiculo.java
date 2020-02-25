@@ -7,6 +7,7 @@ import java.util.Date;
 
 
 /**
+ * @author rvns
  * The persistent class for the TGF_VEHICULO database table.
  * 
  */

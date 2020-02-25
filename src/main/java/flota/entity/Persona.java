@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-
 /**
+ * @author rvns
  * The persistent class for the TGF_PERSONA database table.
  * 
  */
@@ -60,7 +60,7 @@ public class Persona implements Serializable {
 	private BigDecimal num1;
 
 	@Column(name="PER_NUM2")
-	private BigDecimal num2;
+	private  BigDecimal num2;
 
 	@Column(name="PER_NUM3")
 	private BigDecimal num3;

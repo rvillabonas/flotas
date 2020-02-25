@@ -1,8 +1,12 @@
 package flota.gateway.base;
 
+import java.util.Calendar;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 
+import flota.config.GenQuerys;
 import flota.entity.Usuario;
 import flota.gateway.UsuarioMap;
 import flota.util.ConnectionFactory;
@@ -21,12 +25,14 @@ public class UsuarioMapper implements UsuarioMap {
 	}
 
 	public void update(Usuario u) {
+
 		try {
 			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
 			em.getTransaction().begin();
 			em.merge(u);
 			em.getTransaction().commit();
-			em.close(); 
+			em.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			em.getTransaction().rollback();
@@ -34,9 +40,8 @@ public class UsuarioMapper implements UsuarioMap {
 
 	}
 
-	// private Usuario usuario;
-
-	public boolean login(String user, String passwd) {
+	public String login(String user, String passwd) {
+		String loginStatus;
 		try {
 			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
 			StoredProcedureQuery query = em.createNamedStoredProcedureQuery("login");
@@ -46,17 +51,39 @@ public class UsuarioMapper implements UsuarioMap {
 			String validUsuer = (String) query.getOutputParameterValue("usuVal");
 
 			if (validUsuer.equals("S")) {
-				Usuario u = em.find(Usuario.class, user); 
-     			u.setFechaUltIngreso(new java.sql.Timestamp(System.currentTimeMillis()));
-				this.update (u); 
+				Calendar cal = Calendar.getInstance();
+				Usuario u = em.find(Usuario.class, user);
+				u.setFechaUltIngreso(new java.sql.Date(cal.getTimeInMillis()));
+				this.update(u);
+				loginStatus = user;
+			} else {
+				loginStatus = null;
+
 			}
 
 		} finally {
 			if (em != null)
 				em.close();
 		}
+		return loginStatus;
+	}
 
-		return true;
+	public String obtenerRol(String nombreUs) {
+		String perDni = null;
+		try {
+			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
+			Query q = em.createNativeQuery(GenQuerys.PERFIL_PERSONA);
+			q.setParameter("nickname", nombreUs);
+			perDni = (String) q.getSingleResult();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (em != null)
+				em.close();
+		}
+
+		return perDni;
 	}
 
 	public void findById(String u) {

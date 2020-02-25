@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 
 /**
+ * @author rvns
  * The persistent class for the TGF_DIAS_SEM_RESTRIC database table.
  * 
  */

@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 
-/**
+/*
+ * @author rvns
  * The persistent class for the TGF_VENTA database table.
  * 
  */

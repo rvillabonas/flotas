@@ -5,39 +5,33 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
- * The persistent class for the TGF_USUARIO database table.
+ * @author rvns The persistent class for the TGF_USUARIO database table.
  * 
  */
 @Entity
-@Table(name="TGF_USUARIO")
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
-@NamedStoredProcedureQuery(
-		name = "login", 
-		procedureName = "kgf_usuario.pgf_validate_user", 
-		parameters = { 
-			@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "usuario"), 
-			@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "passwd"), 
-			@StoredProcedureParameter(mode = ParameterMode.OUT, type = String.class, name = "usuVal")
-		}
-	)
+@Table(name = "TGF_USUARIO")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+@NamedStoredProcedureQuery(name = "login", procedureName = "kgf_usuario.pgf_validate_user", parameters = {
+		@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "usuario"),
+		@StoredProcedureParameter(mode = ParameterMode.IN, type = String.class, name = "passwd"),
+		@StoredProcedureParameter(mode = ParameterMode.OUT, type = String.class, name = "usuVal") })
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="USU_NICKNAME")
+	@Column(name = "USU_NICKNAME")
 	private String nickname;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="USU_FECHA_ULT_INGRESO")
+	@Column(name = "USU_FECHA_ULT_INGRESO")
 	private Date fechaUltIngreso;
 
-	@Column(name="USU_PASSWORD")
+	@Column(name = "USU_PASSWORD")
 	private String password;
 
-	//bi-directional many-to-one association to Persona
-	@OneToMany(mappedBy="tgfUsuario")
+	// bi-directional many-to-one association to Persona
+	@OneToMany(mappedBy = "tgfUsuario")
 	private List<Persona> tgfPersonas;
 
 	public Usuario() {
@@ -55,7 +49,7 @@ public class Usuario implements Serializable {
 		return this.fechaUltIngreso;
 	}
 
-	public void setFechaUltIngreso(Date fechaUltIngreso) {
+	public void setFechaUltIngreso(final Date fechaUltIngreso) {
 		this.fechaUltIngreso = fechaUltIngreso;
 	}
 

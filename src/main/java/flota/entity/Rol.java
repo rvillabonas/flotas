@@ -6,6 +6,7 @@ import java.util.List;
 
 
 /**
+ * @author rvns
  * The persistent class for the TGF_ROL database table.
  * 
  */
