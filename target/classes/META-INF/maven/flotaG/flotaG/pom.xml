@@ -38,8 +38,13 @@
 			<scope>system</scope>
 			<systemPath>D:\Development\workspace\flotas\lib\jfoenix\jfoenix-8.0.8.jar</systemPath>
 		</dependency>
-
-
+		<dependency>
+			<groupId>de.jensd</groupId>
+			<artifactId>fontawesomefx</artifactId>
+			<version>8.9</version>
+			<scope>system</scope>
+			<systemPath>D:\Development\workspace\flotas\lib\fontawesomefx\fontawesomefx-8.9.jar</systemPath>
+		</dependency>
 	</dependencies>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>

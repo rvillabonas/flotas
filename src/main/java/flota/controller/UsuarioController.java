@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
+import com.jfoenix.controls.JFXButton; 
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -23,14 +23,14 @@ import javafx.stage.Stage;
 public class UsuarioController {
 	private UsuarioMapper us;
 	@FXML
-	Button btnLogin = new Button();
+	private JFXButton btnLogin = new JFXButton();
 	@FXML
 	private TextField txUser;
 	@FXML
 	private TextField txPassword;
 
 	@FXML
-	public void login(ActionEvent event) throws IOException {
+	private void login(ActionEvent event) throws IOException {
 		us = new UsuarioMapper();
 		String user = us.login(txUser.getText(), txPassword.getText());
 		// String rol;
@@ -45,9 +45,9 @@ public class UsuarioController {
 			alert1.showAndWait();
 			Stage stage2 = new Stage();
 			Parent menu1 = FXMLLoader.load(getClass().getResource("/view/Administrador.fxml"));
-			Scene scene = new Scene(menu1, 1100, 800);
+			Scene scene = new Scene(menu1, 1100,800);
 			stage2.setMaximized(false);
-			stage2.setResizable(false);
+			stage2.setResizable(true);
 			stage2.setTitle("Sistema de control de  flotas");
 			stage2.setScene(scene);
 			stage2.show();

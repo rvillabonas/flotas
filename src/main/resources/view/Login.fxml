@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,12 +20,16 @@
                <children>
                   <TextField fx:id="txUser" layoutX="23.0" layoutY="119.0" prefHeight="31.0" prefWidth="269.0" promptText="usuario" />
                   <PasswordField fx:id="txPassword" layoutX="23.0" layoutY="174.0" prefHeight="31.0" prefWidth="269.0" promptText="password" />
-                  <Button fx:id="btnLogin" blendMode="COLOR_DODGE" layoutX="23.0" layoutY="264.0" mnemonicParsing="false" onAction="#login" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #e45652;" text="Aceptar" textFill="#eeebeb" />
                   <Label layoutX="130.0" layoutY="53.0" text="Sign in" textFill="#eeebeb">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <JFXButton fx:id="btnLogin" blendMode="COLOR_DODGE" layoutX="21.0" layoutY="262.0" onAction="#login" prefHeight="31.0" prefWidth="269.0" style="-fx-background-color: #e45652;" text="Aceptar" textAlignment="CENTER" textFill="#eeebef">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </JFXButton>
                </children>
                <effect>
                   <Blend />
