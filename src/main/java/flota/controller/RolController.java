@@ -1,15 +1,13 @@
 package flota.controller;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 
 import flota.entity.Rol;
 import flota.entity.Usuario;
 import flota.gateway.base.RolMapper;
-import flota.view.tables.UsuarioTableView;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,18 +22,19 @@ import javafx.scene.layout.Pane;
 public class RolController {
 
 	@FXML
-	private TableView<UsuarioTableView> usuarioTBL;
+	private TableView<Usuario> usuarioTBL;
 	@FXML
-	private TableColumn<UsuarioTableView, String> usuarioCL;
+	private TableColumn<Usuario, String> usuarioCL;
 	@FXML
-	private TableColumn<UsuarioTableView, String> claveCL;
+	private TableColumn<Usuario, String> claveCL;
 	@FXML
-	private TableColumn<UsuarioTableView, Date> ultIngCL;
+	private TableColumn<Usuario, Date> ultIngCL;
 	@FXML
-	private TableColumn<UsuarioTableView, String> nombreRolCL;
+	private TableColumn<Usuario, String> nombreRolCL;
 
-	ObservableList<UsuarioTableView> usuarioObLista = FXCollections.observableArrayList();
+	ObservableList<Usuario> usuarioObLista = FXCollections.observableArrayList();
 	ObservableList<Rol> usuarioObListRoles = FXCollections.observableArrayList();
+
 	@FXML
 	private Pane pnlSearch, pnlAdd, pnlUpd, pnlDel;
 	@FXML
@@ -52,25 +51,17 @@ public class RolController {
 		System.out.println("ENTRO ");
 		RolMapper rol;
 		rol = new RolMapper();
-		List<Usuario> us = new ArrayList<Usuario>();
-		usuarioCL.setCellValueFactory(new PropertyValueFactory<UsuarioTableView, String>("usuNickname"));
-		claveCL.setCellValueFactory(new PropertyValueFactory<UsuarioTableView, String>("usuClave"));
-		ultIngCL.setCellValueFactory(new PropertyValueFactory<UsuarioTableView, Date>("usuIngreso"));
-		nombreRolCL.setCellValueFactory(new PropertyValueFactory<UsuarioTableView, String>("nombreRol"));
-		us = rol.findAll();
+		usuarioCL.setCellValueFactory(new PropertyValueFactory<Usuario, String>("nickname"));
+		claveCL.setCellValueFactory(new PropertyValueFactory<Usuario, String>("password"));
+		ultIngCL.setCellValueFactory(new PropertyValueFactory<Usuario, Date>("fechaUltIngreso"));
+		nombreRolCL.setCellValueFactory(
+				cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdRol().getNombre()));
 
-		for (Usuario i : us) {
-			UsuarioTableView utv = new UsuarioTableView();
-			utv.setUsuNickname(i.getNickname());
-			utv.setUsuClave(i.getPassword());
-			utv.setUsuIngreso(i.getFechaUltIngreso());
-			utv.setNombreRol(i.getIdRol().getNombre());
-			usuarioObLista.add(utv);
-			}
-
+		usuarioObLista = FXCollections.observableArrayList(rol.findAll());
 		usuarioTBL.setItems(usuarioObLista);
 		getRoles(rol).forEach(r -> {
-			rolCbxItem.getItems().add(r.getIdRol() + " - "+  r.getNombre() );
+			rolCbxItem.getItems().add(r.getNombre());
+
 		});
 
 	}
@@ -101,18 +92,14 @@ public class RolController {
 
 		}
 	}
-	
+
 	@FXML
-	public void crearUsuario () {
-	 Usuario us = new Usuario(); 
-	 
-	 System.out.println("Datos " + rolCbxItem.getValue().substring(0,1)   );
-		
-		
-		
-		
+	public void crearUsuario() {
+		Usuario us = new Usuario();
+
+		System.out.println("Datos " + rolCbxItem.getSelectionModel().getSelectedItem());
+
 		System.out.println("Hola");
 	}
-	
 
 }

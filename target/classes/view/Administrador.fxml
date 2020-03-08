@@ -39,7 +39,7 @@
             <Pane fx:id="pnlDel" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Pane fx:id="pnlSearch" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="354.0" layoutY="52.0" text="Consultar usuarios">
+                  <Label layoutX="340.0" layoutY="45.0" text="Gestión de usuarios">
                      <font>
                         <Font size="26.0" />
                      </font>
