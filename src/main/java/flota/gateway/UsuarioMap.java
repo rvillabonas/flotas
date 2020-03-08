@@ -3,8 +3,8 @@ package flota.gateway;
 import flota.entity.Usuario;;
 
 public interface UsuarioMap {
-	public void  save (Usuario u); 
-	public void remove (Usuario u); 
-    public void update (Usuario u); 
+	public boolean  save (Usuario u); 
+	public boolean remove (Usuario u); 
+    public boolean update (Usuario u); 
     public void findById (String u); 
 }

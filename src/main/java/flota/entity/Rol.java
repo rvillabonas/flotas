@@ -4,37 +4,35 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
- * @author rvns
- * The persistent class for the TGF_ROL database table.
+ * @author rvns The persistent class for the TGF_ROL database table.
  * 
  */
 @Entity
-@Table(name="TGF_ROL")
-@NamedQuery(name="Rol.findAll", query="SELECT r FROM Rol r")
+@Table(name = "TGF_ROL")
+@NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
 public class Rol implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID_ROL")
-	private long idRol;
+	@Column(name = "ID_ROL")
+	private int idRol;
 
-	@Column(name="ROL_NOMBRE")
+	@Column(name = "ROL_NOMBRE")
 	private String nombre;
 
-	//bi-directional many-to-one association to Persona
-	@OneToMany(mappedBy="tgfRol")
-	private List<Persona> tgfPersonas;
+	// bi-directional many-to-one association to Usuario
+	@OneToMany(mappedBy = "rols")
+	private List<Usuario> usuarios;
 
 	public Rol() {
 	}
 
-	public long getIdRol() {
+	public int getIdRol() {
 		return this.idRol;
 	}
 
-	public void setIdRol(long idRol) {
+	public void setIdRol(int idRol) {
 		this.idRol = idRol;
 	}
 
@@ -46,26 +44,30 @@ public class Rol implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public List<Persona> getTgfPersonas() {
-		return this.tgfPersonas;
+	public List<Usuario> getUsuarios() {
+		return this.usuarios;
 	}
 
-	public void setTgfPersonas(List<Persona> tgfPersonas) {
-		this.tgfPersonas = tgfPersonas;
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
-	public Persona addTgfPersona(Persona tgfPersona) {
-		getTgfPersonas().add(tgfPersona);
-		tgfPersona.setTgfRol(this);
-
-		return tgfPersona;
+	public Usuario addUsuario(Usuario us) {
+		getUsuarios().add(us);
+		us.setIdRol(this);
+		return us;
 	}
 
-	public Persona removeTgfPersona(Persona tgfPersona) {
-		getTgfPersonas().remove(tgfPersona);
-		tgfPersona.setTgfRol(null);
+	public Usuario removeUsuario(Usuario us) {
+		getUsuarios().remove(us);
+		us.setIdRol(null);
 
-		return tgfPersona;
+		return us;
+	}
+
+	@Override
+	public String toString() {
+		return nombre;
 	}
 
 }

@@ -69,11 +69,6 @@ public class Persona implements Serializable {
 	@OneToMany(mappedBy="tgfPersona")
 	private List<Flota> tgfFlotas;
 
-	//bi-directional many-to-one association to Rol
-	@ManyToOne
-	@JoinColumn(name="ID_ROL")
-	private Rol tgfRol;
-
 	//bi-directional many-to-one association to Telefono
 	@ManyToOne
 	@JoinColumn(name="TEL_NUMERO2")
@@ -232,14 +227,6 @@ public class Persona implements Serializable {
 		tgfFlota.setTgfPersona(null);
 
 		return tgfFlota;
-	}
-
-	public Rol getTgfRol() {
-		return this.tgfRol;
-	}
-
-	public void setTgfRol(Rol tgfRol) {
-		this.tgfRol = tgfRol;
 	}
 
 	public Telefono getTgfTelefono1() {
