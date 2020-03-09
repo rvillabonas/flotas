@@ -8,7 +8,7 @@ package flota.config;
 
 public class GenQuerys {
 
-	public static final String PERFIL_PERSONA = "select id_rol rol from TGF_PERSONA\r\n"
-			+ "	 WHERE usu_nickname = :nickname";
+	public static final String ROL_DESCRIP = "select id_rol rol from TGF_ROL\r\n"
+			+ "	WHERE rol_nombre = :rolname";
 
 }

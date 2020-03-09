@@ -18,28 +18,18 @@
       <AnchorPane layoutX="215.0" prefHeight="800.0" prefWidth="922.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <FontAwesomeIconView glyphName="CLOSE" layoutX="862.0" layoutY="48.0" size="20" />
-            <Pane fx:id="pnlAdd" layoutY="-5.0" prefHeight="807.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="pnlSearh" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="360.0" layoutY="68.0" text="Agregar usuarios">
+                  <Label layoutX="320.0" layoutY="35.0" text="Búsqueda de usuarios">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnlUpd" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="pnlGest" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="360.0" layoutY="68.0" text="Actualizar usuarios">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="pnlDel" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="pnlSearch" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="340.0" layoutY="45.0" text="Gestión de usuarios">
+                  <Label layoutX="320.0" layoutY="35.0" text="Gestión de usuarios">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -70,7 +60,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
                            <children>
-                              <TableView fx:id="usuarioTBL" layoutX="4.0" layoutY="4.0" prefHeight="678.0" prefWidth="562.0" style="-fx-border-color: #9c2827;" stylesheets="@../css/flota_style.css">
+                              <TableView fx:id="usuarioTBL" layoutX="4.0" layoutY="4.0" onMouseClicked="#manageEvents" prefHeight="678.0" prefWidth="562.0" style="-fx-border-color: #9c2827;" stylesheets="@../css/flota_style.css">
                                 <columns>
                                   <TableColumn fx:id="usuarioCL" prefWidth="151.0" text="Usuario" />
                                   <TableColumn fx:id="claveCL" prefWidth="146.0" text="Clave" />
@@ -97,19 +87,24 @@
                   <FontAwesomeIconView glyphName="SEARCH_PLUS" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnAdd" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="105.0" onAction="#crearUsuario" prefHeight="46.0" prefWidth="216.0" text="Agregar">
+            <JFXButton fx:id="btnAdd" alignment="BASELINE_LEFT" graphicTextGap="52.0" layoutY="105.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Agregar">
                <graphic>
                   <FontAwesomeIconView glyphName="PLUS" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="151.0" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
+            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="51.0" layoutY="151.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
                <graphic>
                   <FontAwesomeIconView glyphName="DATABASE" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="197.0" prefHeight="46.0" prefWidth="216.0" text="Borrar">
+            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="197.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Borrar">
                <graphic>
                   <FontAwesomeIconView glyphName="EXCLAMATION_TRIANGLE" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnNew" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="243.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Nuevo">
+               <graphic>
+                  <FontAwesomeIconView glyphName="STICKY_NOTE_ALT" size="25" />
                </graphic>
             </JFXButton>
          </children>

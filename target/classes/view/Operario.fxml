@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1136.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flota.controller.VentaController">
+   <children>
+      <AnchorPane layoutX="215.0" prefHeight="800.0" prefWidth="922.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FontAwesomeIconView glyphName="CLOSE" layoutX="862.0" layoutY="48.0" size="20" />
+            <Pane fx:id="pnlAdd" layoutY="-5.0" prefHeight="807.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="360.0" layoutY="68.0" text="Agregar Flotas">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlUpd" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="360.0" layoutY="68.0" text="Actualizar flotas">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlDel" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="360.0" layoutY="68.0" text="Borrar flotas">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlSearch" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="320.0" layoutY="35.0" text="Operario">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="800.0" prefWidth="216.0" style="-fx-background-color: #e45652;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="800.0" prefWidth="54.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <effect>
+                  <DropShadow color="#e45652" />
+               </effect>
+            </AnchorPane>
+            <JFXButton fx:id="btnSearch" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="59.0" prefHeight="46.0" prefWidth="216.0" text="Consultar">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SEARCH_PLUS" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnAdd" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="105.0" prefHeight="46.0" prefWidth="216.0" text="Agregar">
+               <graphic>
+                  <FontAwesomeIconView glyphName="PLUS" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="151.0" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
+               <graphic>
+                  <FontAwesomeIconView glyphName="DATABASE" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="197.0" prefHeight="46.0" prefWidth="216.0" text="Borrar">
+               <graphic>
+                  <FontAwesomeIconView glyphName="EXCLAMATION_TRIANGLE" size="25" />
+               </graphic>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow color="#e45652" />
+         </effect></AnchorPane>
+   </children>
+   <effect>
+      <DropShadow />
+   </effect>
+</AnchorPane>

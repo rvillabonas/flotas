@@ -1,8 +1,12 @@
 package flota.gateway.base;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import flota.config.GenQuerys;
 import flota.entity.Rol;
 import flota.entity.Usuario;
 import flota.gateway.RolMap;
@@ -39,7 +43,7 @@ public class RolMapper implements RolMap {
 		List<Usuario> us = new ArrayList<Usuario>();
 		try {
 			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
-			us = em.createNamedQuery("Usuario.findAll").getResultList();
+			us = em.createNamedQuery("Usuario.findAll").getResultList();		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -65,6 +69,49 @@ public class RolMapper implements RolMap {
 			if (em != null)
 				em.close();
 		}
+		return rol;
+	}
+
+	/**
+	 * Obtener el id de un rol
+	 * 
+	 * @param idenRol
+	 * @return
+	 */
+	public int obtenerRol(String idenRol) {
+		int usuRol = 0;
+		try {
+			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
+			Query q = em.createNativeQuery(GenQuerys.ROL_DESCRIP);
+			q.setParameter("rolname", idenRol);
+			usuRol = ((BigDecimal) q.getSingleResult()).intValue();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (em != null)
+				em.close();
+		}
+
+		return usuRol;
+	}
+/**
+ * Obtener rol by id.
+ * @param idRol
+ * @return
+ */
+	public Rol getById(int idRol) {
+		Rol rol = null;
+		try {
+			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
+			rol = em.find(Rol.class, idRol);
+			System.out.println("rol nombre "  + rol.getNombre());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (em != null)
+				em.close();
+		}
+
 		return rol;
 	}
 

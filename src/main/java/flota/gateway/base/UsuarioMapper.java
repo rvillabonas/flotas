@@ -1,21 +1,11 @@
 package flota.gateway.base;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
-
-import flota.config.GenQuerys;
 import flota.entity.Usuario;
 import flota.gateway.UsuarioMap;
 import flota.util.ConnectionFactory;
-import flota.view.tables.UsuarioTableView;
 
 public class UsuarioMapper implements UsuarioMap {
 	private EntityManager em;
@@ -37,16 +27,25 @@ public class UsuarioMapper implements UsuarioMap {
 			em.getTransaction().rollback();
 			return false;
 		}
-
 	}
 
 	/**
 	 * Remover Usuario.
 	 */
 	public boolean remove(Usuario u) {
-		return false;
-		// TODO Auto-generated method stub
-
+		try {
+			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
+			em.getTransaction().begin();
+			em.remove(em.merge(u));
+			em.getTransaction().commit();
+			em.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("error " + e.getCause());
+			em.getTransaction().rollback();
+			return false;
+		}
 	}
 
 	/**
@@ -108,29 +107,6 @@ public class UsuarioMapper implements UsuarioMap {
 				em.close();
 		}
 		return u;
-	}
-
-	/**
-	 * Obtener el rol del usuario que accede a la aplicacion.
-	 * 
-	 * @param nombreUs
-	 * @return usuRol
-	 */
-	public int obtenerRol(String nombreUs) {
-		int usuRol = 0;
-		try {
-			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
-			Query q = em.createNativeQuery(GenQuerys.PERFIL_PERSONA);
-			q.setParameter("nickname", nombreUs);
-			usuRol = ((BigDecimal) q.getSingleResult()).intValue();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (em != null)
-				em.close();
-		}
-
-		return usuRol;
 	}
 
 }

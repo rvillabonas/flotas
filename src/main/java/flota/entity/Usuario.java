@@ -2,9 +2,6 @@ package flota.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import javafx.beans.property.StringProperty;
-
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +38,7 @@ public class Usuario implements Serializable {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "ID_ROL" )
+	@JoinColumn(name = "ID_ROL")
 	private Rol rols;
 
 	public String getNickname() {

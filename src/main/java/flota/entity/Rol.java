@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "TGF_ROL")
 @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
+@NamedQuery(name = "Rol.findRoldID", query = "SELECT r FROM Rol r")
 public class Rol implements Serializable {
 	private static final long serialVersionUID = 1L;
 
