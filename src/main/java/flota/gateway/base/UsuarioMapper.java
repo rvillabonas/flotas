@@ -71,8 +71,6 @@ public class UsuarioMapper implements UsuarioMap {
 	 * Encontrar Usuario por su ID.
 	 */
 	public void findById(String u) {
-		// List <Usuario> us = (List<Usuario>) em.createQuery("select u from
-		// Usuario u").getResultList();
 		// TODO Auto-generated method stub
 	}
 

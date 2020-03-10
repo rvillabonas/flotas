@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -13,40 +18,115 @@
       <AnchorPane layoutX="215.0" prefHeight="800.0" prefWidth="922.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <FontAwesomeIconView glyphName="CLOSE" layoutX="862.0" layoutY="48.0" size="20" />
-            <Pane fx:id="pnlAdd" layoutY="-5.0" prefHeight="807.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="pnlVehi" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="360.0" layoutY="68.0" text="Agregar Flotas">
+                  <Label layoutX="410.0" layoutY="10.0" text="Vehículos">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
+                  <SplitPane dividerPositions="0.16591928251121077" layoutX="14.0" layoutY="73.0" prefHeight="721.0" prefWidth="894.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <JFXButton fx:id="btnAddVeh" graphicTextGap="15.0" layoutY="313.0" prefHeight="31.0" prefWidth="146.0" text="Agregar">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="CARET_RIGHT" size="20" />
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <TableView fx:id="tvwVehiculos" prefHeight="719.0" prefWidth="740.0" style="-fx-border-color: #9c2827;">
+                                <columns>
+                                    <TableColumn fx:id="clPlaca" prefWidth="117.0" text="Placa" />
+                                    <TableColumn fx:id="clMarca" prefWidth="157.0" text="Marca" />
+                                    <TableColumn fx:id="clModelo" prefWidth="134.0" text="Modelo" />
+                                  <TableColumn fx:id="clTopeVeh" prefWidth="163.0" text="Tope" />
+                                  <TableColumn fx:id="clIdConductor" prefWidth="166.0" text="Id Conductor" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
                </children>
             </Pane>
-            <Pane fx:id="pnlUpd" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="pnlCond" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="360.0" layoutY="68.0" text="Actualizar flotas">
+                  <Label layoutX="410.0" layoutY="10.0" text="Conductores">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
+                  <SplitPane dividerPositions="0.16591928251121077" prefHeight="721.0" prefWidth="894.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <JFXButton fx:id="btnAddConduct" graphicTextGap="15.0" layoutY="313.0" prefHeight="31.0" prefWidth="146.0" text="Agregar">
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="CARET_RIGHT" size="20" />
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <TableView fx:id="tvwConduct" prefHeight="719.0" prefWidth="740.0" style="-fx-border-color: #9c2827;">
+                                 <columns>
+                                    <TableColumn fx:id="clIdCConduct" prefWidth="117.0" text="Identificación" />
+                                    <TableColumn fx:id="clCondNombre1" prefWidth="183.0" text="Nombre" />
+                                    <TableColumn fx:id="clCondApe1" prefWidth="161.0" text="Apellido" />
+                                    <TableColumn fx:id="clCondApe2" prefWidth="181.0" text="Apellido 2" />
+                                    <TableColumn fx:id="clCondEstado" prefWidth="95.0" text="Estado" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
                </children>
             </Pane>
-            <Pane fx:id="pnlDel" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="pnlGest" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="360.0" layoutY="68.0" text="Borrar flotas">
+                  <Label layoutX="320.0" layoutY="10.0" text="Cliente: gestión de flotas">
                      <font>
                         <Font size="26.0" />
                      </font>
                   </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="pnlSearch" layoutY="1.0" prefHeight="800.0" prefWidth="931.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="320.0" layoutY="35.0" text="Cliente: gestión de flotas">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
+                  <SplitPane dividerPositions="0.38870431893687707" layoutX="8.0" layoutY="73.0" prefHeight="721.0" prefWidth="905.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <JFXTextField fx:id="tfNombreFlota" focusColor="#9c2827" layoutX="23.0" layoutY="80.0" prefHeight="31.0" prefWidth="302.0" />
+                              <JFXTextArea fx:id="txADescript" focusColor="#9c2827" layoutX="23.0" layoutY="187.0" prefHeight="229.0" prefWidth="302.0" style="-fx-background-color: #fff;" />
+                              <Label layoutX="23.0" layoutY="35.0" text="* Nombre">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="23.0" layoutY="139.0" text="Descripción">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="711.0" prefWidth="531.0" style="-fx-background-color: #fff;">
+                           <children>
+                              <TableView fx:id="tvFlotas" layoutX="4.0" layoutY="6.0" prefHeight="709.0" prefWidth="526.0" style="-fx-border-color: #9c2827;">
+                                <columns>
+                                  <TableColumn fx:id="clIdFlota" prefWidth="57.0" text="Id" />
+                                  <TableColumn fx:id="clNombre" prefWidth="143.0" text="Nombre" />
+                                    <TableColumn fx:id="clDescript" prefWidth="174.0" text="Descrip." />
+                                    <TableColumn fx:id="clFecCrea" prefWidth="148.0" text="Fecha Creac." />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
                </children>
             </Pane>
          </children></AnchorPane>
@@ -57,24 +137,29 @@
                   <DropShadow color="#e45652" />
                </effect>
             </AnchorPane>
-            <JFXButton fx:id="btnSearch" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="59.0" prefHeight="46.0" prefWidth="216.0" text="Consultar">
-               <graphic>
-                  <FontAwesomeIconView glyphName="SEARCH_PLUS" size="25" />
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="btnAdd" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="105.0" prefHeight="46.0" prefWidth="216.0" text="Agregar">
+            <JFXButton fx:id="btnAdd" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="59.0" prefHeight="46.0" prefWidth="216.0" text="Agregar">
                <graphic>
                   <FontAwesomeIconView glyphName="PLUS" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="151.0" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
+            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="46.0" layoutY="105.0" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
                <graphic>
-                  <FontAwesomeIconView glyphName="DATABASE" size="25" />
+                  <FontAwesomeIconView glyphName="DATABASE" size="25" textAlignment="CENTER" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="197.0" prefHeight="46.0" prefWidth="216.0" text="Borrar">
+            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="151.0" prefHeight="46.0" prefWidth="216.0" text="Borrar">
                <graphic>
-                  <FontAwesomeIconView glyphName="EXCLAMATION_TRIANGLE" size="25" />
+                  <FontAwesomeIconView glyphName="TRASH" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnAddVe" alignment="BASELINE_LEFT" graphicTextGap="44.0" layoutY="197.0" prefHeight="46.0" prefWidth="216.0" text="Asignar vehiculo">
+               <graphic>
+                  <FontAwesomeIconView glyphName="TAXI" size="20" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnAddCo" alignment="BASELINE_LEFT" graphicTextGap="46.0" layoutY="243.0" prefHeight="46.0" prefWidth="216.0" text="Asignar conductor">
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER_SECRET" size="25" />
                </graphic>
             </JFXButton>
          </children>

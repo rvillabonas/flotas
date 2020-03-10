@@ -92,14 +92,14 @@
                   <FontAwesomeIconView glyphName="PLUS" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="51.0" layoutY="151.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
+            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="151.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
                <graphic>
                   <FontAwesomeIconView glyphName="DATABASE" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="197.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Borrar">
+            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="51.0" layoutY="197.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Borrar">
                <graphic>
-                  <FontAwesomeIconView glyphName="EXCLAMATION_TRIANGLE" size="25" />
+                  <FontAwesomeIconView glyphName="TRASH" size="25" />
                </graphic>
             </JFXButton>
             <JFXButton fx:id="btnNew" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="243.0" onAction="#gestionarUsu" prefHeight="46.0" prefWidth="216.0" text="Nuevo">

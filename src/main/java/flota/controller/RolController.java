@@ -84,7 +84,7 @@ public class RolController {
 	}
 
 	/**
-	 * Desplegar opciones sde acuerdo el rol.
+	 * Gestionar opciones CRUD de acuerdo al boton escogido.
 	 * 
 	 * @param event
 	 */
@@ -213,6 +213,9 @@ public class RolController {
 		}
 	}
 
+	/**
+	 * Listener sobre el table View de Usuario que gestiona el evento de seleccion de filas.
+	 */
 	@FXML
 	private void manageEvents() {
 		usuarioTBL.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {

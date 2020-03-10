@@ -32,11 +32,16 @@ public class UsuarioController {
 	@FXML
 	private TextField txPassword;
 
+	/**
+	 * Gestionar login del usuario y desplegar sus opciones.
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void login(ActionEvent event) throws IOException {
 		us = new UsuarioMapper();
 		Usuario usApp = us.login(txUser.getText().toUpperCase(), txPassword.getText());
-		if (usApp == null)  {
+		if (usApp == null) {
 			Alert alert2 = new Alert(AlertType.ERROR);
 			DialogPane dialogPane2 = alert2.getDialogPane();
 			dialogPane2.getStylesheets().add(getClass().getResource("/css/dialog.css").toExternalForm());
@@ -45,21 +50,19 @@ public class UsuarioController {
 			alert2.setHeaderText(Mensaje.LOGIN);
 			alert2.setContentText(Mensaje.CONTEXT_INFO);
 			alert2.showAndWait();
-		}	
-		else  {
+		} else {
 			Alert alert1 = new Alert(AlertType.INFORMATION);
 			DialogPane dialogPane1 = alert1.getDialogPane();
 			dialogPane1.getStylesheets().add(getClass().getResource("/css/dialog.css").toExternalForm());
 			dialogPane1.getStyleClass().add("dialog-pane");
 			alert1.setTitle(Mensaje.INFO);
-			alert1.setHeaderText("Bienvenido " + usApp.getNickname() +". Su rol es: " + usApp.getIdRol().getNombre() + "!!!");
+			alert1.setHeaderText(
+					"Bienvenido " + usApp.getNickname() + ". Su rol es: " + usApp.getIdRol().getNombre() + "!!!");
 			alert1.setContentText(Mensaje.CONTEXT_INFO_BI);
 			alert1.showAndWait();
 			Stage stage2 = new Stage();
 
 			switch (usApp.getIdRol().getIdRol()) {
-			case 0:
-				break;
 			case 1:
 				Parent menu1 = FXMLLoader.load(getClass().getResource("/view/Administrador.fxml"));
 				Scene scene = new Scene(menu1, 1100, 800);
@@ -71,6 +74,7 @@ public class UsuarioController {
 				stage2.show();
 				break;
 			case 2:
+				// crear metodo que cree el cliente y haga eso 
 				Parent menu2 = FXMLLoader.load(getClass().getResource("/view/Operario.fxml"));
 				Scene scene2 = new Scene(menu2, 1100, 800);
 				scene2.getStylesheets().add(getClass().getResource("/css/flota_style.css").toExternalForm());
@@ -78,7 +82,7 @@ public class UsuarioController {
 				stage2.setResizable(false);
 				stage2.setTitle(Mensaje.CONTEXT_INFO_BI);
 				stage2.setScene(scene2);
-				stage2.show();				
+				stage2.show();
 				break;
 			case 3:
 				Parent menu3 = FXMLLoader.load(getClass().getResource("/view/Cliente.fxml"));
@@ -88,13 +92,13 @@ public class UsuarioController {
 				stage2.setResizable(false);
 				stage2.setTitle(Mensaje.CONTEXT_INFO_BI);
 				stage2.setScene(scene3);
-				stage2.show();	
+				stage2.show();
 				break;
 			default:
 				break;
 			}
 
-		} 
+		}
 	}
 
 }
