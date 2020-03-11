@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
+import flota.constantes.GenQuerys;
 import flota.entity.Flota;
+import flota.entity.Persona;
+import flota.entity.Rol;
 import flota.gateway.FlotaMap;
 import flota.util.ConnectionFactory;
 
 public class FlotaMapper implements FlotaMap {
 	private EntityManager em;
+	Persona p;
 
 	@Override
 	public boolean save(Flota f) {
@@ -25,6 +30,9 @@ public class FlotaMapper implements FlotaMap {
 			e.printStackTrace();
 			em.getTransaction().rollback();
 			return false;
+		} finally {
+			if (em != null)
+				em.close();
 		}
 	}
 
@@ -41,6 +49,9 @@ public class FlotaMapper implements FlotaMap {
 			e.printStackTrace();
 			em.getTransaction().rollback();
 			return false;
+		} finally {
+			if (em != null)
+				em.close();
 		}
 	}
 
@@ -49,7 +60,10 @@ public class FlotaMapper implements FlotaMap {
 		try {
 			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
 			em.getTransaction().begin();
+			//f = em.find(Flota.class,  );
+			
 			em.merge(f);
+			em.flush();
 			em.getTransaction().commit();
 			em.close();
 			return true;
@@ -57,6 +71,9 @@ public class FlotaMapper implements FlotaMap {
 			e.printStackTrace();
 			em.getTransaction().rollback();
 			return false;
+		} finally {
+			if (em != null)
+				em.close();
 		}
 	}
 
@@ -66,10 +83,28 @@ public class FlotaMapper implements FlotaMap {
 		return null;
 	}
 
+	/**
+	 * Se obtiene la un lista de flotas del cliente.
+	 */
+
+	@SuppressWarnings("unchecked")
 	@Override
-	public Flota findFlotaByClient(String clienId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Flota> findFlotaByClient(String idClient) {
+		List<Flota> listFlota = new ArrayList<Flota>();
+		try {
+			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
+			Query query = em.createQuery(GenQuerys.FLOTA_BY_CLIENT);
+			query.setParameter("idPer", idClient);
+			listFlota = query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (em != null)
+				em.close();
+		}
+		return listFlota;
+
 	}
 
 	@Override
@@ -77,27 +112,4 @@ public class FlotaMapper implements FlotaMap {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	/**
-	 * SE obtiene la un lista de flotas del cliente.
-	 * @return
-	 */
-	
-	@SuppressWarnings("unchecked")
-	public List<Flota> getAllFlotas() {
-		List<Flota> listFlota = new ArrayList<Flota>();
-		try {
-			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
-			listFlota = em.createNamedQuery("Flota.findAll").getResultList();		
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (em != null)
-				em.close();
-		}
-		return listFlota;
-	}
-
-	
-
 }

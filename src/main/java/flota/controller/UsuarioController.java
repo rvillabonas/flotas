@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXButton;
 
-import flota.config.Mensaje;
+import flota.constantes.Mensaje;
 import flota.entity.Usuario;
 import flota.gateway.base.UsuarioMapper;
 import javafx.event.ActionEvent;
@@ -74,7 +74,7 @@ public class UsuarioController {
 				stage2.show();
 				break;
 			case 2:
-				// crear metodo que cree el cliente y haga eso 
+				
 				Parent menu2 = FXMLLoader.load(getClass().getResource("/view/Operario.fxml"));
 				Scene scene2 = new Scene(menu2, 1100, 800);
 				scene2.getStylesheets().add(getClass().getResource("/css/flota_style.css").toExternalForm());
@@ -84,16 +84,33 @@ public class UsuarioController {
 				stage2.setScene(scene2);
 				stage2.show();
 				break;
+				/*FXMLLoader loader1 = new FXMLLoader(); 
+				loader1.setLocation(getClass().getResource("/view/Operario.fxml"));
+				Parent menu2 = loader1.load(); 
+				Scene scene2 = new Scene(menu2, 1100, 800);
+				FlotaController cont1 = loader1.getController(); 
+				cont1.setPersona(us.findPerByIdRoL(usApp.getIdRol().getIdRol(), txUser.getText().toUpperCase())); 
+				scene2.getStylesheets().add(getClass().getResource("/css/flota_style.css").toExternalForm());
+				stage2.setMaximized(false);
+				stage2.setResizable(false);
+				stage2.setTitle(Mensaje.CONTEXT_INFO_BI);
+				stage2.setScene(scene2);
+				stage2.show();
+			    break;*/
 			case 3:
-				Parent menu3 = FXMLLoader.load(getClass().getResource("/view/Cliente.fxml"));
+				FXMLLoader loader2 = new FXMLLoader(); 
+				loader2.setLocation(getClass().getResource("/view/Cliente.fxml"));
+				Parent menu3 = loader2.load();
 				Scene scene3 = new Scene(menu3, 1100, 800);
+				FlotaController cont2 = loader2.getController(); 
+				cont2.setPersona(us.findPerByIdRoL(usApp.getIdRol().getIdRol(), txUser.getText().toUpperCase())); 
 				scene3.getStylesheets().add(getClass().getResource("/css/flota_style.css").toExternalForm());
 				stage2.setMaximized(false);
 				stage2.setResizable(false);
 				stage2.setTitle(Mensaje.CONTEXT_INFO_BI);
 				stage2.setScene(scene3);
 				stage2.show();
-				break;
+		     	break;
 			default:
 				break;
 			}

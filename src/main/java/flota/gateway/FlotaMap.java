@@ -13,7 +13,7 @@ public interface FlotaMap {
 
 	public List<Flota> getAll();
 
-	public Flota findFlotaByClient(String clienId);
+	public List<Flota> findFlotaByClient(String dniClient);
 
 	public Flota findFlotaById(Integer flotId);
 

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import com.jfoenix.controls.JFXButton;
 
-import flota.config.Mensaje;
+import flota.constantes.Mensaje;
 import flota.entity.Rol;
 import flota.entity.Usuario;
 import flota.gateway.base.RolMapper;
@@ -65,6 +65,7 @@ public class RolController {
 
 		usuarioObLista = FXCollections.observableArrayList(rol.findAll());
 		usuarioTBL.setItems(usuarioObLista);
+		
 		getRoles(rol).forEach(r -> {
 			rolCbxItem.getItems().add(r.getNombre());
 		});

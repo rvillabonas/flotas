@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import flota.config.GenQuerys;
+import flota.constantes.GenQuerys;
 import flota.entity.Rol;
 import flota.entity.Usuario;
 import flota.gateway.RolMap;
@@ -43,7 +43,7 @@ public class RolMapper implements RolMap {
 		List<Usuario> us = new ArrayList<Usuario>();
 		try {
 			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
-			us = em.createNamedQuery("Usuario.findAll").getResultList();		
+			us = em.createNamedQuery("Usuario.findAll").getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -94,18 +94,19 @@ public class RolMapper implements RolMap {
 
 		return usuRol;
 	}
-/**
- * Obtener rol by id.
- * @param idRol
- * @return
- */
+
+	/**
+	 * Obtener rol by id.
+	 * 
+	 * @param idRol
+	 * @return
+	 */
 	public Rol getById(int idRol) {
 		Rol rol = null;
 		try {
 			em = ConnectionFactory.getEntityManagerFactory().createEntityManager();
 			rol = em.find(Rol.class, idRol);
-			System.out.println("rol nombre "  + rol.getNombre());
-		} catch (Exception e) {
+			} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (em != null)

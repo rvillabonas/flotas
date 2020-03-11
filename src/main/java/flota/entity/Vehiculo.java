@@ -25,7 +25,7 @@ public class Vehiculo implements Serializable {
 	private String idCliente;
 
 	@Column(name="VEH_ANIO_MODELO")
-	private BigDecimal anioModelo;
+	private int anioModelo;
 
 	@Column(name="VEH_CANT_LAVADAS")
 	private Integer cantLavadas;
@@ -86,11 +86,11 @@ public class Vehiculo implements Serializable {
 		this.idCliente = idCliente;
 	}
 
-	public BigDecimal getAnioModelo() {
+	public int getAnioModelo() {
 		return this.anioModelo;
 	}
 
-	public void setAnioModelo(BigDecimal anioModelo) {
+	public void setAnioModelo(int anioModelo) {
 		this.anioModelo = anioModelo;
 	}
 

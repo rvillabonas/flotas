@@ -5,49 +5,49 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
- * @author rvns
- * The persistent class for the TGF_FLOTA database table.
+ * @author rvns The persistent class for the TGF_FLOTA database table.
  * 
  */
 @Entity
-@Table(name="TGF_FLOTA")
-@NamedQuery(name="Flota.findAll", query="SELECT f FROM Flota f")
+@Table(name = "TGF_FLOTA")
+@NamedQuery(name = "Flota.findAll", query = "SELECT f FROM Flota f")
 public class Flota implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID_FLOTA")
-	private long idFlota;
+	@Column(name = "ID_FLOTA")
+	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "generator")
+	@SequenceGenerator(name ="generator", sequenceName = "TGF_FLOTA_SEQ", allocationSize = 1) 
+	private int idFlota;
 
-	@Column(name="FLO_DESCRIPCION")
+	@Column(name = "FLO_DESCRIPCION")
 	private String descripcion;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="FLO_FECHA_CREACION")
+	@Column(name = "FLO_FECHA_CREACION")
 	private Date fechaCreacion;
 
-	@Column(name="FLO_NOMBRE")
+	@Column(name = "FLO_NOMBRE")
 	private String nombre;
 
-	//bi-directional many-to-one association to Persona
+	// bi-directional many-to-one association to Persona
 	@ManyToOne
-	@JoinColumn(name="PER_DNI")
+	@JoinColumn(name = "PER_DNI")
 	private Persona tgfPersona;
 
-	//bi-directional many-to-one association to Vehiculo
-	@OneToMany(mappedBy="tgfFlota")
+	// bi-directional many-to-one association to Vehiculo
+	@OneToMany(mappedBy = "tgfFlota")
 	private List<Vehiculo> tgfVehiculos;
 
 	public Flota() {
 	}
 
-	public long getIdFlota() {
+	public int getIdFlota() {
 		return this.idFlota;
 	}
 
-	public void setIdFlota(long idFlota) {
+	public void setIdFlota(int idFlota) {
 		this.idFlota = idFlota;
 	}
 

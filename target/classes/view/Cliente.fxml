@@ -38,13 +38,13 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
                            <children>
-                              <TableView fx:id="tvwVehiculos" prefHeight="719.0" prefWidth="740.0" style="-fx-border-color: #9c2827;">
+                              <TableView fx:id="tvwVehiculos" prefHeight="719.0" prefWidth="725.0" style="-fx-border-color: #9c2827;">
                                 <columns>
                                     <TableColumn fx:id="clPlaca" prefWidth="117.0" text="Placa" />
                                     <TableColumn fx:id="clMarca" prefWidth="157.0" text="Marca" />
                                     <TableColumn fx:id="clModelo" prefWidth="134.0" text="Modelo" />
                                   <TableColumn fx:id="clTopeVeh" prefWidth="163.0" text="Tope" />
-                                  <TableColumn fx:id="clIdConductor" prefWidth="166.0" text="Id Conductor" />
+                                  <TableColumn fx:id="clIdConductor" prefWidth="149.0" text="Id Conductor" />
                                 </columns>
                               </TableView>
                            </children>
@@ -60,7 +60,7 @@
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <SplitPane dividerPositions="0.16591928251121077" prefHeight="721.0" prefWidth="894.0">
+                  <SplitPane dividerPositions="0.16591928251121077" layoutX="14.0" layoutY="73.0" prefHeight="721.0" prefWidth="894.0">
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
                            <children>
@@ -73,13 +73,13 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #fff;">
                            <children>
-                              <TableView fx:id="tvwConduct" prefHeight="719.0" prefWidth="740.0" style="-fx-border-color: #9c2827;">
+                              <TableView fx:id="tvwConduct" prefHeight="719.0" prefWidth="725.0" style="-fx-border-color: #9c2827;">
                                  <columns>
                                     <TableColumn fx:id="clIdCConduct" prefWidth="117.0" text="Identificación" />
                                     <TableColumn fx:id="clCondNombre1" prefWidth="183.0" text="Nombre" />
                                     <TableColumn fx:id="clCondApe1" prefWidth="161.0" text="Apellido" />
                                     <TableColumn fx:id="clCondApe2" prefWidth="181.0" text="Apellido 2" />
-                                    <TableColumn fx:id="clCondEstado" prefWidth="95.0" text="Estado" />
+                                    <TableColumn fx:id="clCondEstado" prefWidth="78.0" text="Estado" />
                                  </columns>
                               </TableView>
                            </children>
@@ -115,7 +115,7 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="711.0" prefWidth="531.0" style="-fx-background-color: #fff;">
                            <children>
-                              <TableView fx:id="tvFlotas" layoutX="4.0" layoutY="6.0" prefHeight="709.0" prefWidth="526.0" style="-fx-border-color: #9c2827;">
+                              <TableView fx:id="tvFlotas" layoutX="4.0" layoutY="6.0" onMouseClicked="#manageEvents" prefHeight="709.0" prefWidth="526.0" style="-fx-border-color: #9c2827;">
                                 <columns>
                                   <TableColumn fx:id="clIdFlota" prefWidth="57.0" text="Id" />
                                   <TableColumn fx:id="clNombre" prefWidth="143.0" text="Nombre" />
@@ -137,29 +137,34 @@
                   <DropShadow color="#e45652" />
                </effect>
             </AnchorPane>
-            <JFXButton fx:id="btnAdd" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="59.0" prefHeight="46.0" prefWidth="216.0" text="Agregar">
+            <JFXButton fx:id="btnAdd" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="59.0" onAction="#gestionarCli" prefHeight="46.0" prefWidth="216.0" text="Agregar">
                <graphic>
                   <FontAwesomeIconView glyphName="PLUS" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="46.0" layoutY="105.0" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
+            <JFXButton fx:id="btnUpd" alignment="BASELINE_LEFT" graphicTextGap="46.0" layoutY="105.0" onAction="#gestionarCli" prefHeight="46.0" prefWidth="216.0" text="Actualizar">
                <graphic>
                   <FontAwesomeIconView glyphName="DATABASE" size="25" textAlignment="CENTER" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="151.0" prefHeight="46.0" prefWidth="216.0" text="Borrar">
+            <JFXButton fx:id="btnDel" alignment="BASELINE_LEFT" graphicTextGap="47.0" layoutY="151.0" onAction="#gestionarCli" prefHeight="46.0" prefWidth="216.0" text="Borrar">
                <graphic>
                   <FontAwesomeIconView glyphName="TRASH" size="25" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnAddVe" alignment="BASELINE_LEFT" graphicTextGap="44.0" layoutY="197.0" prefHeight="46.0" prefWidth="216.0" text="Asignar vehiculo">
+            <JFXButton fx:id="btnAddVe" alignment="BASELINE_LEFT" graphicTextGap="44.0" layoutY="197.0" onAction="#gestionarCli" prefHeight="46.0" prefWidth="216.0" text="Asignar vehiculo">
                <graphic>
                   <FontAwesomeIconView glyphName="TAXI" size="20" />
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnAddCo" alignment="BASELINE_LEFT" graphicTextGap="46.0" layoutY="243.0" prefHeight="46.0" prefWidth="216.0" text="Asignar conductor">
+            <JFXButton fx:id="btnAddCo" alignment="BASELINE_LEFT" graphicTextGap="46.0" layoutY="243.0" onAction="#gestionarCli" prefHeight="46.0" prefWidth="216.0" text="Asignar conductor">
                <graphic>
                   <FontAwesomeIconView glyphName="USER_SECRET" size="25" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnNew" alignment="BASELINE_LEFT" graphicTextGap="46.0" layoutY="289.0" onAction="#gestionarCli" prefHeight="46.0" prefWidth="216.0" text="Nuevo">
+               <graphic>
+                  <FontAwesomeIconView glyphName="STICKY_NOTE_ALT" size="25" />
                </graphic>
             </JFXButton>
          </children>
